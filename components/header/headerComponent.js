@@ -4,7 +4,7 @@ export function header() {
 
     
     let h1 = document.createElement('h1');
-    h1.innerText = "Todo-Iist";
+    h1.innerText = "✏️Todo-Iist";
     header.appendChild(h1);
 
     let divTarea = document.createElement('div');
