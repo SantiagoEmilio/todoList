@@ -1,7 +1,7 @@
 import { footer } from "../components/footer/footerComponents.js";
 import { header } from "../components/header/headerComponents.js";
 import { tareas } from "../components/tarea/tareaComponents.js";
-import { informaciones } from "../components/informacion/informacionComponents.js";
+import { informacion } from "../components/informacion/informacionComponents.js";
 
 export function dashboard() {
     let dashboard = document.createElement('section');
@@ -16,7 +16,7 @@ export function dashboard() {
 
     // Añadimos las dos secciones dentro del contenedor
     contenedor.appendChild(tareas());
-    contenedor.appendChild(informaciones());
+    contenedor.appendChild(informacion());
 
     dashboard.appendChild(contenedor);
 
