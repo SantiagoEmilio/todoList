@@ -12,7 +12,7 @@ export function footer() {
 
     let enlace = document.createElement('a');
     enlace.className = "footer-github";
-    enlace.href = "https://github.com/Rg4Pablo21/todo_list.git";
+    enlace.href = "https://github.com/SantiagoEmilio/todoList";
     enlace.innerText = "GitHub";
     enlace.target = "_blank"; 
     divContenido.appendChild(enlace);
