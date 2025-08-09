@@ -3,7 +3,7 @@ import { header } from "../components/header/headerComponents.js";
 import { tareas } from "../components/tarea/tareaComponents.js";
 import { informacion } from "../components/informacion/informacionComponents.js";
 
-const tareasDb = [
+export const tareasDb = [
     {
         indice: 1,
         titulo: "Hola mundo1",
@@ -33,6 +33,10 @@ const tareasDb = [
     }
 ];
 
+let contenedor;
+let panelTareas;
+let panelInfo;
+
 export function dashboard() {
     let dashboard = document.createElement('section');
     dashboard.className = "dashboard";
@@ -40,30 +44,46 @@ export function dashboard() {
     //header
     dashboard.appendChild(header());
 
-    let contenedor = document.createElement('section');
+    contenedor = document.createElement('section');
     contenedor.className = "contenedor-secciones";
 
     // Panel info inicial (mostrar la primera tarea)
-    let panelInfo = informacion(tareasDb[0]);
+    panelInfo = informacion(tareasDb[0], refrescarDashboard);
 
-    // Panel tareas con callback para actualizar info
-    let panelTareas = tareas(tareasDb, (tareaSeleccionada) => {
-        const nuevoPanel = informacion(tareaSeleccionada);
+    // Panel tareas
+    panelTareas = tareas(tareasDb, (tareaSeleccionada) => {
+        const nuevoPanel = informacion(tareaSeleccionada, refrescarDashboard);
         contenedor.replaceChild(nuevoPanel, panelInfo);
-        panelInfo = nuevoPanel; // actualizar referencia
+        panelInfo = nuevoPanel;
     });
 
     contenedor.appendChild(panelTareas);
     contenedor.appendChild(panelInfo);
 
-
     dashboard.appendChild(contenedor);
-
-    //footer
     dashboard.appendChild(footer());
 
     return dashboard;
 }
 
-document.body.appendChild(dashboard());
+// Función para reconstruir las secciones cuando se agrega una tarea
+export function refrescarDashboard() {
+    // Reconstruir lista de tareas
+    const nuevoPanelTareas = tareas(tareasDb, (tareaSeleccionada) => {
+        const nuevoPanel = informacion(tareaSeleccionada, refrescarDashboard);
+        contenedor.replaceChild(nuevoPanel, panelInfo);
+        panelInfo = nuevoPanel;
+    });
 
+    // Reemplazar panel de tareas
+    contenedor.replaceChild(nuevoPanelTareas, panelTareas);
+    panelTareas = nuevoPanelTareas;
+
+    // Mostrar la última tarea agregada en panel info
+    const nuevaTarea = tareasDb[tareasDb.length - 1];
+    const nuevoPanelInfo = informacion(nuevaTarea, refrescarDashboard);
+    contenedor.replaceChild(nuevoPanelInfo, panelInfo);
+    panelInfo = nuevoPanelInfo;
+}
+
+document.body.appendChild(dashboard());

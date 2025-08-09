@@ -1,7 +1,6 @@
-import { tareasDb, refrescarDashboard } from "../../VIews/dasboarView.js";
+import { tareasDb } from "../../VIews/dasboarView.js";
 
-// Formulario modal
-function crearFormularioTarea(cerrarModalCallback) {
+export function crearFormularioTarea(cerrarModalCallback) {
     function obtenerFechaActual() {
         const hoy = new Date();
         const yyyy = hoy.getFullYear();
@@ -10,23 +9,28 @@ function crearFormularioTarea(cerrarModalCallback) {
         return `${yyyy}-${mm}-${dd}`;
     }
 
+    // Fondo oscuro
     let overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
 
+    // Caja modal
     let modal = document.createElement('div');
     modal.className = 'modal';
 
+    // Formulario
     let formulario = document.createElement('form');
     formulario.className = 'formulario-tarea';
 
     let tituloFormulario = document.createElement('h2');
     tituloFormulario.textContent = "Agregar nueva tarea";
 
+    // Campo: Título
     let inputTitulo = document.createElement('input');
     inputTitulo.type = "text";
     inputTitulo.placeholder = "Título de la tarea";
     inputTitulo.required = true;
 
+    // Campo: Estado
     let selectEstado = document.createElement('select');
     ["pendiente", "En progreso", "completado"].forEach(estado => {
         let option = document.createElement('option');
@@ -35,6 +39,7 @@ function crearFormularioTarea(cerrarModalCallback) {
         selectEstado.appendChild(option);
     });
 
+    // Campo: Fecha de asignación (solo lectura)
     let divFechaAs = document.createElement('div');
     let labelFechaAs = document.createElement('label');
     labelFechaAs.textContent = "📅 Fecha de asignación";
@@ -49,6 +54,7 @@ function crearFormularioTarea(cerrarModalCallback) {
     divFechaAs.appendChild(labelFechaAs);
     divFechaAs.appendChild(inputFechaAs);
 
+    // Campo: Fecha de entrega
     let divFechaEn = document.createElement('div');
     let labelFechaEn = document.createElement('label');
     labelFechaEn.textContent = "📌 Fecha de entrega";
@@ -62,14 +68,17 @@ function crearFormularioTarea(cerrarModalCallback) {
     divFechaEn.appendChild(labelFechaEn);
     divFechaEn.appendChild(inputFechaEn);
 
+    // Campo: Descripción
     let inputDescripcion = document.createElement('textarea');
     inputDescripcion.placeholder = "Descripción de la tarea";
     inputDescripcion.required = true;
 
+    // Botón agregar
     let btnAgregar = document.createElement('button');
     btnAgregar.type = "submit";
     btnAgregar.textContent = "Agregar tarea";
 
+    // Botón cerrar (X)
     let btnCerrar = document.createElement('span');
     btnCerrar.className = "cerrar-modal";
     btnCerrar.textContent = "×";
@@ -78,6 +87,7 @@ function crearFormularioTarea(cerrarModalCallback) {
         if (cerrarModalCallback) cerrarModalCallback();
     });
 
+    // Armado del formulario
     formulario.appendChild(tituloFormulario);
     formulario.appendChild(inputTitulo);
     formulario.appendChild(selectEstado);
@@ -90,6 +100,7 @@ function crearFormularioTarea(cerrarModalCallback) {
     modal.appendChild(formulario);
     overlay.appendChild(modal);
 
+    // Evento submit
     formulario.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -100,7 +111,7 @@ function crearFormularioTarea(cerrarModalCallback) {
             fechaAs: inputFechaAs.value,
             fechaEn: inputFechaEn.value,
             descripcion: inputDescripcion.value,
-            integrantes: []
+            integrantes: [] // vacío por ahora
         };
 
         tareasDb.push(nuevaTarea);
@@ -108,69 +119,7 @@ function crearFormularioTarea(cerrarModalCallback) {
 
         overlay.remove();
         if (cerrarModalCallback) cerrarModalCallback();
-
-        refrescarDashboard(); // 🔹 Actualizar pantalla
     });
 
     return overlay;
-}
-
-export function informacion(tarea) {
-    let contenedor = document.createElement('div');
-    contenedor.className = "contenedor-informacion";
-
-    let divBotones = document.createElement('div');
-    divBotones.className = "div-botones";
-
-    let btnTarea = document.createElement('button');
-    btnTarea.className = "btn-tarea";
-    btnTarea.innerText = "+ tarea";
-    btnTarea.addEventListener("click", () => {
-        document.body.appendChild(crearFormularioTarea());
-    });
-
-    let btnArchivados = document.createElement('button');
-    btnArchivados.className = "btn-archivados";
-    btnArchivados.innerText = "Archivados";
-
-    divBotones.appendChild(btnTarea);
-    divBotones.appendChild(btnArchivados);
-
-    let tarjeta = document.createElement('div');
-    tarjeta.className = "div-informacion";
-
-    let divEstado = document.createElement('div');
-    divEstado.className = "estado-tarea";
-    divEstado.innerText = tarea.estado;
-    tarjeta.appendChild(divEstado);
-
-    let titulo = document.createElement('h3');
-    titulo.className = "titulo-asignacion";
-    titulo.innerText = tarea.titulo;
-    tarjeta.appendChild(titulo);
-
-    let descripcion = document.createElement('p');
-    descripcion.className = "descripcion-asignacion";
-    descripcion.innerText = tarea.descripcion;
-    tarjeta.appendChild(descripcion);
-
-    let spanIntegrantes = document.createElement('span');
-    spanIntegrantes.className = "span-integrantes";
-    spanIntegrantes.innerText = "Integrantes";
-    tarjeta.appendChild(spanIntegrantes);
-
-    let divIntegrantes = document.createElement('div');
-    divIntegrantes.className = "div-integrantes";
-    tarea.integrantes.forEach(icono => {
-        let divIntegrante = document.createElement('div');
-        divIntegrante.className = "integrante";
-        divIntegrante.innerText = icono;
-        divIntegrantes.appendChild(divIntegrante);
-    });
-    tarjeta.appendChild(divIntegrantes);
-
-    contenedor.appendChild(divBotones);
-    contenedor.appendChild(tarjeta);
-
-    return contenedor;
 }

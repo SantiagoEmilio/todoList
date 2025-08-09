@@ -10,6 +10,7 @@
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
+    flex-wrap: wrap; /* Que se ajusten en pantallas pequeñas */
 }
 
 .btn-tarea {
@@ -20,6 +21,7 @@
     border-radius: 8px;
     font-size: 0.9rem;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .btn-archivados {
@@ -30,6 +32,7 @@
     border-radius: 8px;
     font-size: 0.9rem;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 /* Tarjeta de información */
@@ -51,7 +54,6 @@
     align-self: flex-end; /* lo empuja al final (derecha) */
     width: fit-content;
 }
-
 
 /* Texto */
 .div-informacion h3 {
@@ -84,4 +86,100 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* 📱 Móviles (hasta 600px) */
+@media (max-width: 600px) {
+    .contenedor-informacion {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .div-botones {
+        justify-content: center;
+        gap: 0.7rem;
+    }
+
+    .btn-tarea,
+    .btn-archivados {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .div-informacion h3 {
+        font-size: 0.9rem;
+    }
+
+    .div-informacion .descripcion-asignacion {
+        font-size: 0.8rem;
+    }
+
+    .span-integrantes {
+        font-size: 0.85rem;
+    }
+
+    .integrante {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}
+
+/* 📱 Tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .contenedor-informacion {
+        padding: 1.5rem 2rem;
+    }
+
+    .btn-tarea,
+    .btn-archivados {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.9rem;
+    }
+
+    .div-informacion h3 {
+        font-size: 0.95rem;
+    }
+
+    .div-informacion .descripcion-asignacion {
+        font-size: 0.83rem;
+    }
+
+    .span-integrantes {
+        font-size: 0.9rem;
+    }
+
+    .integrante {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+/* 🖥 Escritorio (1025px en adelante) */
+@media (min-width: 1025px) {
+    .contenedor-informacion {
+        padding: 2rem 3rem;
+    }
+
+    .btn-tarea,
+    .btn-archivados {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .div-informacion h3 {
+        font-size: 1rem;
+    }
+
+    .div-informacion .descripcion-asignacion {
+        font-size: 0.85rem;
+    }
+
+    .span-integrantes {
+        font-size: 1rem;
+    }
+
+    .integrante {
+        width: 2rem;
+        height: 2rem;
+    }
 }

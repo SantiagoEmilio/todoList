@@ -5,14 +5,18 @@ header {
   padding: 6px 10px;
   border: 1px solid black;
   font-family: Arial, sans-serif;
+  flex-wrap: wrap; /* Permite que en pantallas pequeñas baje el contenido */
+  gap: 8px;
 }
 
+/* Contenedor interno de tareas */
 .header-tarea {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* Contador */
 .contador {
   border: 1px solid black;
   border-radius: 5px;
@@ -20,6 +24,7 @@ header {
   font-size: 14px;
 }
 
+/* Icono de usuario */
 .icono-usuario {
   width: 24px;
   height: 24px;
@@ -28,4 +33,64 @@ header {
   margin-left: 10px;
   padding: 2px;
   object-fit: cover;
+}
+
+/* 📱 Móviles (hasta 600px) */
+@media (max-width: 600px) {
+  header {
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 10px;
+  }
+
+  .header-tarea {
+    gap: 6px;
+  }
+
+  .contador {
+    font-size: 12px;
+    padding: 1.5px 5px;
+  }
+
+  .icono-usuario {
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
+    padding: 1px;
+  }
+}
+
+/* 📱 Tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  header {
+    padding: 6px 15px;
+  }
+
+  .contador {
+    font-size: 13px;
+    padding: 2px 5px;
+  }
+
+  .icono-usuario {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* 🖥 Escritorio (1025px en adelante) */
+@media (min-width: 1025px) {
+  header {
+    padding: 6px 20px;
+  }
+
+  .contador {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+
+  .icono-usuario {
+    width: 24px;
+    height: 24px;
+  }
 }

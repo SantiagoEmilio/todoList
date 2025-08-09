@@ -2,6 +2,7 @@ footer {
     margin-top: 2rem;
     text-align: center;
     font-family: Arial, sans-serif;
+    padding: 1rem;
 }
 
 footer hr {
@@ -14,6 +15,8 @@ footer hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Permite que el contenido baje en pantallas pequeñas */
+    gap: 10px;
 }
 
 .footer-github {
@@ -26,4 +29,30 @@ footer hr {
 
 .footer-github:hover {
     color: #4ED4F5;
+}
+
+/* 📱 Móviles */
+@media (max-width: 600px) {
+    .footer-contenido {
+        flex-direction: column; /* En columna para pantallas pequeñas */
+        gap: 0.5rem;
+    }
+    .footer-github {
+        font-size: 1rem;
+    }
+}
+
+/* 📱 Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .footer-contenido {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+/* 🖥 Escritorio */
+@media (min-width: 1025px) {
+    .footer-contenido {
+        gap: 1.5rem;
+    }
 }
