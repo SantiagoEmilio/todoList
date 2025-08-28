@@ -4,6 +4,7 @@ header {
   align-items: center;
   padding: 6px 10px;
   border: 1px solid black;
+    background-color: rgb(255, 248, 239);
   font-family: Arial, sans-serif;
   flex-wrap: wrap; /* Permite que en pantallas pequeñas baje el contenido */
   gap: 8px;

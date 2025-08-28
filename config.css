@@ -19,3 +19,6 @@ html {
     --parrafo: 14rem;
     --spam: 12rem;
 }
+body{
+    background-color: aquamarine;
+}

@@ -3,11 +3,12 @@ footer {
     text-align: center;
     font-family: Arial, sans-serif;
     padding: 1rem;
+    background-color: rgb(255, 248, 239);
 }
 
 footer hr {
     border: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #faf9f9;
     margin-bottom: 1rem;
 }
 
