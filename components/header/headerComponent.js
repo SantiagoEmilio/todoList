@@ -16,7 +16,7 @@ export function header() {
 
     let divContador = document.createElement('div');
     divContador.className = "contador";
-    divContador.innerText = "0";
+    divContador.innerText = "10";
     divTarea.appendChild(divContador);
 
     let iconoUsuario = document.createElement('img');

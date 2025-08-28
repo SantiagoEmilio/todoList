@@ -1,0 +1,27 @@
+.dashboard {
+   display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  height: 100vh;
+
+}
+
+.seccion-1 {
+    padding-top: 3rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+@media (max-width: 700px) {
+    .seccion-1 {
+        grid-template-columns: auto;
+    }   
+}
+
+@media (min-width: 1300px) {
+    .seccion-1 {
+        max-width: 130rem;
+        margin: auto;
+    }
+}

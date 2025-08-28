@@ -1,0 +1,142 @@
+.contenedorInformacion{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+.div-botones {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-tarea,
+.btn-archivados {
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tarea {
+    background: #4aa6ff;
+    color: white;
+}
+
+
+.btn-archivados {
+    background: #e5e7eb;
+    color: #555;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+
+.div-informacion {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    row-gap:1rem;
+    position: relative;
+    min-height: 180px;
+}
+
+.estado-tarea {
+    grid-column: 2;
+    grid-row: 1;
+
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.estado-tarea.pendiente {
+    background: #5bf05b;
+    color: #000000;
+}
+
+.estado-tarea.en-progreso {
+   
+     background: #4aa6ff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.estado-tarea.completada {
+    background: #25c91f;
+    color: #d1fae5;
+}
+
+.titulo-asignacion {
+    grid-column: 1 / 3;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.descripcion-asignacion {
+    grid-column: 1 / 3;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+.texto-integrantes {
+    grid-column: 1 / 3;
+    margin-top: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.div-integrantes {
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+}
+
+.integrante {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: 2px solid #94a3b8;
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #1e293b;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
